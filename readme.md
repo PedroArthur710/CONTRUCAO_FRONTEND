@@ -5,3 +5,4 @@
 
 - Material Icon Theme (Extensão das pastas)
 - Live Preview
+npm
