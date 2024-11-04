@@ -217,8 +217,8 @@ export default function AlunoFormPage(props) {
             </Row>
 
             {/* Foto */}
-            <Form.Group className='mb-2'>
-              <Form.Label>Foto (URL):</Form.Label>
+            <Form.Group as={Col}>
+              <Form.Label>Link da Foto:</Form.Label>
               <Form.Control
                 name='foto'
                 type='text'
@@ -226,12 +226,9 @@ export default function AlunoFormPage(props) {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 isValid={touched.foto && !errors.foto}
-                isInvalid={touched.foto && errors.foto}
+                isInvalid={touched.foto && !!errors.foto}
               />
               <Form.Control.Feedback type='invalid'>{errors.foto}</Form.Control.Feedback>
-              {values.foto && !errors.foto && (
-                <img src={values.foto} alt="Foto do aluno" style={{ maxWidth: '200px', marginTop: '10px' }} />
-              )}
             </Form.Group>
 
             {/* Botões */}
