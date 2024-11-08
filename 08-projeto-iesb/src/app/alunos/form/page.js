@@ -1,4 +1,3 @@
-
 'use client'
 
 import Pagina from '@/components/Pagina'
@@ -10,7 +9,7 @@ import { v4 } from 'uuid'
 import * as Yup from 'yup'
 import { useState } from 'react'
 
-export default function AlunoFormPage(props) {
+export default function AlunosFormPage(props) {
 
   const router = useRouter()
 
@@ -32,6 +31,7 @@ export default function AlunoFormPage(props) {
 
   // Função para salvar os dados do form
   function salvar(dados) {
+    console.log("Dados enviados:", dados); // Adicione esta linha para verificar os dados
     if (alunoEditado) {
       Object.assign(alunoEditado, dados)
       localStorage.setItem('alunos', JSON.stringify(alunos))
@@ -40,13 +40,13 @@ export default function AlunoFormPage(props) {
       alunos.push(dados)
       localStorage.setItem('alunos', JSON.stringify(alunos))
     }
-
+  
     alert("Aluno cadastrado com sucesso!")
     router.push("/alunos")
   }
 
   // Valores iniciais do formulário
-  const initialValues = {
+  const initialValues = alunoEditado || {
     nome: '',
     sobrenome: '',
     email: '',
@@ -75,15 +75,17 @@ export default function AlunoFormPage(props) {
 
   return (
     <Pagina titulo={"Cadastro de Aluno"}>
-      <Formik
-        initialValues={alunoEditado || initialValues}
-        validationSchema={validationSchema}
-        onSubmit={salvar}
-        >
+    <Formik
+  initialValues={alunoEditado || initialValues}
+  validationSchema={validationSchema}
+  onSubmit={(values, actions) => {
+    salvar(values);
+    actions.setSubmitting(false); // Para reativar o botão após o envio
+  }}
+    >
         {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => {
-          
           return (
-          <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit}>
             <Row className='mb-2'>
               <Form.Group as={Col}>
                 <Form.Label>Nome:</Form.Label>
@@ -114,13 +116,12 @@ export default function AlunoFormPage(props) {
               </Form.Group>
             </Row>
 
-            {/* Outros campos: Email, Data de Nascimento, Telefone */}
             <Row className='mb-2'>
               <Form.Group as={Col}>
                 <Form.Label>Email:</Form.Label>
                 <Form.Control
                   name='email'
-                  type='email'
+                  type='text'
                   value={values.email}
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -145,7 +146,7 @@ export default function AlunoFormPage(props) {
               </Form.Group>
             </Row>
 
-            {/* Telefone e Matrícula */}
+            
             <Row className='mb-2'>
               <Form.Group as={Col}>
                 <Form.Label>Telefone:</Form.Label>
@@ -214,14 +215,13 @@ export default function AlunoFormPage(props) {
                 </Form.Select>
                 <Form.Control.Feedback type='invalid'>{errors.curso}</Form.Control.Feedback>
               </Form.Group>
-            </Row>
+            
 
             {/* Foto */}
             <Form.Group as={Col}>
               <Form.Label>Link da Foto:</Form.Label>
               <Form.Control
                 name='foto'
-                type='text'
                 value={values.foto}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -230,19 +230,23 @@ export default function AlunoFormPage(props) {
               />
               <Form.Control.Feedback type='invalid'>{errors.foto}</Form.Control.Feedback>
             </Form.Group>
-
+            </Row>
+            
             {/* Botões */}
+            
             <Form.Group className='text-end'>
-              <Button className='me-2' href='/alunos'><FaArrowLeft /> Voltar</Button>
-              <Button type='submit' variant='success'><FaCheck /> Enviar</Button>
+            <Button className='me-2' href='/alunos'><FaArrowLeft /> Voltar</Button>
+            <Button type='submit' variant='success'><FaCheck /> Enviar</Button>
             </Form.Group>
           
           </Form>
           )
         }
-      }
-
+        }
+  
+    
       </Formik>
+    
     </Pagina>
   )
 }
