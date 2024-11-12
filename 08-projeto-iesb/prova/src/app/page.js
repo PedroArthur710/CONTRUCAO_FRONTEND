@@ -6,37 +6,37 @@ import { Button, Card, Col, Row } from 'react-bootstrap'
 export default function HomePage() {
 
 
-  const faculdades = JSON.parse(localStorage.getItem("faculdades")) || []
-  const cursos = JSON.parse(localStorage.getItem("cursos")) || []
-  const professores = JSON.parse(localStorage.getItem("professores")) || []
-  const disciplinas = JSON.parse(localStorage.getItem("disciplinas")) || []
-  const alunos = JSON.parse(localStorage.getItem("alunos")) || []
+  const servicos = JSON.parse(localStorage.getItem("servicos")) || []
+  const pets = JSON.parse(localStorage.getItem("pets")) || []
+  const clientes = JSON.parse(localStorage.getItem("clientes")) || []
+  const agendamentos = JSON.parse(localStorage.getItem("agendamentos")) || []
+  const funcionarios = JSON.parse(localStorage.getItem("funcionarios")) || []
 
   const lista = [
     {
-      nome: "Faculdades",
-      imagem: "https://i.pinimg.com/236x/53/f4/63/53f463fcc23af8ec4fc28e7c5ccd168a.jpg", quantidade: faculdades.length,
-      link: "/faculdades"
+      nome: "Serviços",
+      imagem: "https://i.pinimg.com/236x/53/f4/63/53f463fcc23af8ec4fc28e7c5ccd168a.jpg", quantidade: servicos.length,
+      link: "/servicos"
     },
     {
-      nome: "Cursos",
-      imagem: "https://i.pinimg.com/474x/b2/1d/08/b21d0843c3a0d5f5586222644bf402cd.jpg", quantidade: cursos.length,
-      link: "/cursos"
+      nome: "Pets",
+      imagem: "https://t4.ftcdn.net/jpg/02/69/47/89/360_F_269478900_EEEXPJa7ohrxraL6L6V2GlmltteALheQ.jpg", quantidade: pets.length,
+      link: "/pets"
     },
     {
-      nome: "Professores",
-      imagem: "https://i.pinimg.com/736x/39/09/fb/3909fb65bbab271bb5a9ddbf85c80d00.jpg", quantidade: professores.length,
-      link: "/professores"
+      nome: "Clientes",
+      imagem: "https://i.pinimg.com/736x/39/09/fb/3909fb65bbab271bb5a9ddbf85c80d00.jpg", quantidade: clientes.length,
+      link: "/clientes"
     },
     {
-      nome: "Disciplinas",
-      imagem: "https://i.pinimg.com/236x/79/0f/fc/790ffceeb183a1059b77c5558342ffc0.jpg", quantidade: disciplinas.length,
-      link: "/disciplinas"
+      nome: "Agendamentos",
+      imagem: "https://i.pinimg.com/236x/79/0f/fc/790ffceeb183a1059b77c5558342ffc0.jpg", quantidade: agendamentos.length,
+      link: "/agendamentos"
     },
     {
-      nome: "Alunos",
-      imagem: "https://i.pinimg.com/236x/ce/96/4d/ce964d843b92374b8b96e105ffa82831.jpg", quantidade: alunos.length,
-      link: "/alunos"
+      nome: "Funcionários",
+      imagem: "https://i.pinimg.com/236x/ce/96/4d/ce964d843b92374b8b96e105ffa82831.jpg", quantidade: funcionarios.length,
+      link: "/funcionarios"
     },
   ]
 

@@ -2,31 +2,30 @@
 
 import { Container, Nav, Navbar } from "react-bootstrap"
 
-
 export default function Pagina({ titulo, children }) {
 
   return (
     <>
       {/* Barra de Navegação */}
-      <Navbar bg="dark" data-bs-theme="dark">
+      <Navbar style={{ backgroundColor: '#FFA500' }}>
         <Container>
-          <Navbar.Brand href="/">Home</Navbar.Brand>
+          <Navbar.Brand href="/" style={{ color: 'black' }}>Home</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="/faculdades">Serviços</Nav.Link>
-            <Nav.Link href="/cursos">Pets</Nav.Link>
-            <Nav.Link href="/disciplinas">Clintes</Nav.Link>
-            <Nav.Link href="/professores">Agendamento</Nav.Link>
-            <Nav.Link href="/alunos">Funcionarios</Nav.Link>
+            <Nav.Link href="/servicos" style={{ color: 'black' }}>Serviços</Nav.Link>
+            <Nav.Link href="/pets" style={{ color: 'black' }}>Pets</Nav.Link>
+            <Nav.Link href="/clientes" style={{ color: 'black' }}>Clientes</Nav.Link>
+            <Nav.Link href="/agendamentos" style={{ color: 'black' }}>Agendamentos</Nav.Link>
+            <Nav.Link href="/funcionarios" style={{ color: 'black' }}>Funcionários</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
 
       {/* Barra de Titulo */}
-      <div className="bg-secondary text-center text-white py-2">
+      <div className="bg-dark text-center text-white py-2">
         <h1>{titulo}</h1>
       </div>
 
-      {/* Conteudo da Página */}
+      {/* Conteúdo da Página */}
       <Container className="mt-2">
         {children}
       </Container>
